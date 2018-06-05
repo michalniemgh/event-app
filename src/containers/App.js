@@ -1,11 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+
+import AppBar from './AppBar';
+import Main from '../routes/Main'
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        123
-      </div>
+      <Fragment>
+        <AppBar />
+        <Main />
+      </Fragment>
     );
   }
 }
