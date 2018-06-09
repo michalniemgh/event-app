@@ -30,7 +30,6 @@ const CategoriesTitle = styled.h1`
   margin: 0
 `;
 
-
 const Categories = () => (
   <CategoriesContainer>
     <CategoriesTitle>
@@ -42,15 +41,17 @@ const Categories = () => (
           title="Music"
           description="Awesome music category"
           image={image3}
+          path="/music"
           md={12}
           lg={8}
         />
         <Category
-            title="Food and Drink"
-            description="Awesome sport category"
-            image={image2}
-            md={6}
-            lg={4}
+          title="Food and Drink"
+          description="Awesome sport category"
+          image={image2}
+          path="/food"
+          md={6}
+          lg={4}
         />
       </Row>
       <Row>
@@ -58,22 +59,25 @@ const Categories = () => (
           title="Classes"
           description="Awesome music category"
           image={image3}
+          path="/classes"
           md={6}
           lg={4} 
         />
         <Category
-            title="Arts"
-            description="Awesome sport category"
-            image={image4}
-            md={6}
-            lg={4}
+          title="Arts"
+          description="Awesome sport category"
+          image={image4}
+          path="/arts"
+          md={6}
+          lg={4}
         />
         <Category
-            title="Parties"
-            description="Awesome sport category"
-            image={image5}
-            md={6}
-            lg={4}
+          title="Parties"
+          description="Awesome sport category"
+          image={image5}
+          path="/parties"
+          md={6}
+          lg={4}
         />
       </Row>
       <Row>
@@ -81,15 +85,17 @@ const Categories = () => (
           title="Sports and Wallness"
           description="Awesome music category"
           image={image6}
+          path="/sports"
           md={6}
           lg={4} 
         />
         <Category
-            title="Networking"
-            description="Awesome sport category"
-            image={image7}
-            md={12}
-            lg={8}
+          title="Networking"
+          description="Awesome sport category"
+          image={image7}
+          path="/networking"
+          md={12}
+          lg={8}
         />
       </Row>
     </Grid>

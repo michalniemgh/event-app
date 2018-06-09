@@ -2,33 +2,41 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Col } from 'react-flexbox-grid';
+import { NavLink } from 'react-router-dom';
 
-const CategoryWrapper = styled.div`
+
+const StyledCategoryLink = styled(NavLink)`
   height: 220px;
   margin: 8px 0;
   border-radius: 4px;
   overflow: hidden;
-`;
-
-const CategoryContainer = styled.div`
-  height: 100%;
-  background-size: cover;
-  background-repeat: no-repeat;
-  backgroun-position: center;
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  overflow: hidden
-  transition: .5s;
+  text-decoration: none;
+  &:hover {
+    cursor: pointer;
+  };
   &:hover > h4 {
     font-size: 15px;
   };
-  &:hover {
+  &:hover > img {
     transform: scale(1.2);
-    cursor: pointer;
-    filter: brightness(50%);
+    filter: brightness(30%);
   };
+  &:focus, &:hover, &:visited, &:link, &:active {
+      text-decoration: none;
+  }
+`;
+
+const CategoryImage = styled.img`
+  height: 100%;
+  width: 100%;
+  transition: .5s;
+  object-fit: cover;
+  position: absolute;
 `;
 
 const CategoryTitle = styled.h2`
@@ -37,6 +45,7 @@ const CategoryTitle = styled.h2`
   font-size: 25px;
   margin: 0;
   transition: .5s;
+  z-index: 1;
 `;
 
 const CategoryDescription = styled.h4`
@@ -45,18 +54,16 @@ const CategoryDescription = styled.h4`
   font-size: 0;
   margin-top: 10px;
   transition: .5s;
+  z-index: 1;
 `;
 
-const setBackgroundImage = imageUrl => ({ backgroundImage: `url("${imageUrl}")` })
-
-const Category = ({ title, description, image, ...props }) => (
+const Category = ({ title, description, image, path, ...props }) => (
   <Col { ...props }>
-    <CategoryWrapper>
-      <CategoryContainer style={setBackgroundImage(image)} >
-        <CategoryTitle>{title}</CategoryTitle>
-        <CategoryDescription>{description}</CategoryDescription>
-      </CategoryContainer>
-    </CategoryWrapper>
+    <StyledCategoryLink to={path}>
+      <CategoryImage src={image}/>
+      <CategoryTitle>{title}</CategoryTitle>
+      <CategoryDescription>{description}</CategoryDescription>
+    </StyledCategoryLink>
   </Col>
 );
 
@@ -64,6 +71,7 @@ Category.propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,
   image: PropTypes.string,
+  path: PropTypes.string,
 }
 
 export default Category;

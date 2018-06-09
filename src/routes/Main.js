@@ -1,8 +1,9 @@
 import React, { Fragment } from 'react';
 import styled from 'styled-components';
 
-import VideoPanel from '../components/VideoPanel';
+import Banner from '../components/Banner';
 import Searcher from '../components/Searcher';
+import PopularEvents from '../containers/PopularEvents';
 import Categories from '../containers/Categories';
 
 const MainContainer = styled.div`
@@ -14,9 +15,10 @@ const MainContainer = styled.div`
 
 export default () => (
   <MainContainer>
-    <VideoPanel />
+    <Banner />
     <Searcher />
     <Categories />
+    <PopularEvents />
   </MainContainer>
 )
 

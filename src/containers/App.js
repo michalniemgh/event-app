@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from 'react';
+import { Route } from 'react-router-dom';
 
+import WithProviders from '../hocs/withProviders';
 import AppBar from './AppBar';
 import Main from '../routes/Main'
 
@@ -8,10 +10,10 @@ class App extends Component {
     return (
       <Fragment>
         <AppBar />
-        <Main />
+        <Route path="/main" component={Main} />
       </Fragment>
     );
   }
 }
 
-export default App;
+export default WithProviders(App);

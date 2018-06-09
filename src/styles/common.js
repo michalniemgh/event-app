@@ -14,4 +14,5 @@ export const colors = {
   red: '#F86820',
   blue: '#0278b8',
   darkBlue: '#013653',
+  sea: '#007f8c',
 }
