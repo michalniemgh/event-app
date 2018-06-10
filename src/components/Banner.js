@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import banner from '../assets/images/banner.jpeg'
+import banner from '../assets/images/banner.jpeg';
 
 const Banner = styled.div`
   width: 100%;

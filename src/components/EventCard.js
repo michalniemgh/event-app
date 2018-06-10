@@ -4,74 +4,101 @@ import styled from 'styled-components';
 import { Col } from 'react-flexbox-grid';
 import { NavLink } from 'react-router-dom';
 
+import { colors } from '../styles/common.js';
 
-const StyledCategoryLink = styled(NavLink)`
-  height: 220px;
+const EventCardContainer = styled.div`
   margin: 8px 0;
-  border-radius: 4px;
-  overflow: hidden;
-  position: relative;
   display: flex;
+  position: relative;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
+  background-color: white;
   &:hover {
-    cursor: pointer;
+    box-shadow: 0 1px 5px 1px rgba(0,0,0,.1);
   };
-  &:hover > h4 {
-    font-size: 15px;
-  };
-  &:hover > img {
-    transform: scale(1.2);
-    filter: brightness(30%);
-  };
+`;
+
+const EventCardPoster = styled.img`
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+`;
+
+const EventCardPrice = styled.div`
+  background-color: rgba(255,255,255,.7);
+  text-transform: uppercase;
+  font-size: 12px;
+  padding: 5px 10px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+`;
+
+const StyledEventLink = styled(NavLink)`
+  color: ${colors.grey};
+  text-decoration: none;
   &:focus, &:hover, &:visited, &:link, &:active {
-      text-decoration: none;
+    text-decoration: none;
   }
 `;
 
-const CategoryImage = styled.img`
-  height: 100%;
-  width: 100%;
-  transition: .5s;
-  object-fit: cover;
-  position: absolute;
+const EventBody = styled.div`
+  padding: 10px 15px;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid ${colors.lightGrey};
 `;
 
-const CategoryTitle = styled.h2`
-  color: white;
+const EventCardDate = styled.div`
+  font-size: 12px;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 7px;
+`;
+
+const EventCardTitle = styled.div`
   font-weight: 600;
-  font-size: 25px;
-  margin: 0;
-  transition: .5s;
-  z-index: 1;
+  margin-top: 7px;
 `;
 
-const CategoryDescription = styled.h4`
-  color: white;
-  font-weight: 300
-  font-size: 0;
-  margin-top: 10px;
-  transition: .5s;
-  z-index: 1;
+const EventCardVenue = styled.div`
+  height: 18px;
+  margin-top: 20px;
 `;
 
-const EventCard = ({ title, description, image, path, ...props }) => (
+const EventCardFooter = styled.div`
+  display: flex;
+  height: 40px;
+  width: 100%;
+  border-bottom: 1px solid ${colors.lightGrey};
+  padding-left: 15px;
+`;
+
+const EventCard = ({ path, price, image, date, title, venue, ...props }) => (
   <Col { ...props }>
-    <StyledCategoryLink to={path}>
-      <CategoryImage src={image}/>
-      <CategoryTitle>{title}</CategoryTitle>
-      <CategoryDescription>{description}</CategoryDescription>
-    </StyledCategoryLink>
+    <EventCardContainer>
+      <StyledEventLink to={path}>
+        <EventCardPrice>{price}</EventCardPrice>
+        <EventCardPoster src={image} />
+        <EventBody>
+          <EventCardDate>{date}</EventCardDate>
+          <EventCardTitle>{title}</EventCardTitle>
+          <EventCardVenue>{venue}</EventCardVenue>
+        </EventBody>
+      </StyledEventLink>
+      <EventCardFooter>
+
+
+      </EventCardFooter>
+    </EventCardContainer>
   </Col>
 );
 
-EventCard.propTypes = {
-  title: PropTypes.string,
-  description: PropTypes.string,
-  image: PropTypes.string,
-  path: PropTypes.string,
-}
+// EventCard.propTypes = {
+//   title: PropTypes.string,
+//   description: PropTypes.string,
+//   image: PropTypes.string,
+//   path: PropTypes.string,
+// }
 
 export default EventCard;

@@ -2,6 +2,7 @@ import * as paths from '../routes/paths';
 
 import music from '../assets/images/music.jpeg'
 import food from '../assets/images/food.jpg'
+import classes from '../assets/images/classes.jpeg'
 import arts from '../assets/images/arts.jpeg'
 import parties from '../assets/images/parties.jpeg'
 import sports from '../assets/images/sports.jpeg'
@@ -24,7 +25,7 @@ export default [
   {
     title: 'Classes',
     description: 'Enlightening seminars, technical workshops and fitness classes',
-    image: arts,
+    image: classes,
     path: paths.CLASSES,
   },
   {
