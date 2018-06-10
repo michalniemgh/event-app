@@ -1,17 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import headerImage from '../assets/images/slide5.jpg'
+import banner from '../assets/images/banner.jpeg'
 
 const Banner = styled.div`
   width: 100%;
   height: 500px;
-  background-position: bottom;
+  background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  background-image: url("${banner}")
 `;
 
-const setBackgroundImage = image => ({backgroundImage: `url("${image}")`})
-
-export default () => <Banner style={setBackgroundImage(headerImage)}/>
+export default () => <Banner />

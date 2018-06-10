@@ -17,8 +17,8 @@ export default () => (
   <MainContainer>
     <Banner />
     <Searcher />
-    <Categories />
     <PopularEvents />
+    <Categories />
   </MainContainer>
 )
 

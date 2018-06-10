@@ -7,7 +7,7 @@ export const getCurrentPosition = () =>
     navigator.geolocation.getCurrentPosition(resolve);
   });
 
-export const getCityName = ({ latitude, longitude }) => 
+export const getCityName = ({ latitude, longitude }) =>
   get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${API_KEY}`)
     .then(response => response.data.results[0].address_components[2].long_name)
     .catch(error => console.log(error))

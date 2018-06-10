@@ -4,10 +4,10 @@ import styled from 'styled-components';
 import { Col } from 'react-flexbox-grid';
 import { NavLink } from 'react-router-dom';
 
-
 const StyledCategoryLink = styled(NavLink)`
   height: 220px;
   margin: 8px 0;
+  padding: 10px;
   border-radius: 4px;
   overflow: hidden;
   position: relative;
@@ -20,7 +20,7 @@ const StyledCategoryLink = styled(NavLink)`
     cursor: pointer;
   };
   &:hover > h4 {
-    font-size: 15px;
+    transform: scale(1);
   };
   &:hover > img {
     transform: scale(1.2);
@@ -50,17 +50,18 @@ const CategoryTitle = styled.h2`
 
 const CategoryDescription = styled.h4`
   color: white;
+  text-align: center;
   font-weight: 300
-  font-size: 0;
+  transform: scale(0);
   margin-top: 10px;
   transition: .5s;
   z-index: 1;
 `;
 
 const Category = ({ title, description, image, path, ...props }) => (
-  <Col { ...props }>
+  <Col {...props}>
     <StyledCategoryLink to={path}>
-      <CategoryImage src={image}/>
+      <CategoryImage src={image} />
       <CategoryTitle>{title}</CategoryTitle>
       <CategoryDescription>{description}</CategoryDescription>
     </StyledCategoryLink>
