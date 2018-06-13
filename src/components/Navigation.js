@@ -1,59 +1,43 @@
 import React from 'react';
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 import { colors } from '../styles/common.js';
 
-const Navigation = styled.nav`
-  height: 100%
-`
+const Navigation = styled.div`
+  margin: 0;
+  height: 100%;
+  display: flex;
+`;
 
-const List = styled.ul`
-  margin: 0
-  height: 100%
-  list-style-type: none
-  display: flex
-`
-
-const ListItem = styled.li`
-  text-transform: uppercase
-  border-left: 1px solid ${colors.lightGrey}
-  padding: 0 20px
-  font-size: 12px
-  letter-spacing: 0.5px
-  color: ${colors.grey}
-  display: flex
-  align-items: center
-  transition: .5s
+const NavigationItemLink = styled(NavLink)`
+  text-transform: uppercase;
+  border-left: 1px solid ${colors.lightGrey};
+  padding: 0 20px;
+  font-size: 14px;
+  font-weight: ${({ bold }) => bold ? 600 : 300};
+  letter-spacing: 0.5px;
+  color: ${({ bold }) => bold ? colors.blue : colors.grey};
+  display: flex;
+  align-items: center;
+  transition: .5s;
+  text-decoration: none;
+  &:focus, &:hover, &:visited, &:link, &:active {
+    text-decoration: none;
+  };
   &:hover {
-    background-color: ${colors.lightGrey}
-    cursor: pointer
-  }
-`
-
-const ListItemBold = styled.li`
-  text-transform: uppercase
-  border-left: 1px solid ${colors.lightGrey}
-  padding: 0 20px
-  font-size: 12px
-  font-weight: 600
-  letter-spacing: 0.5px
-  color: ${colors.blue}
-  display: flex
-  align-items: center
-  transition: .5s
-  &:hover {
-    color: ${colors.darkBlue}
-    cursor: pointer
-  }
-  `
+    background-color: ${({ bold }) => bold ? 'white' : colors.lightGrey};
+    color: ${({ bold }) => bold ? colors.darkBlue : colors.grey};
+    cursor: pointer;
+  };
+`;
 
 export default () => (
   <Navigation>
-    <List>
-      <ListItem>About</ListItem>
-      <ListItem>Sing in</ListItem>
-      <ListItemBold>Create Event</ListItemBold>
-    </List>
+    <NavigationItemLink to='/browse-events'>Browse Event</NavigationItemLink>
+    <NavigationItemLink to='/about'>About</NavigationItemLink>
+    <NavigationItemLink to='/sing-in'>Sing in</NavigationItemLink>
+    <NavigationItemLink bold to='/create-event'>Create Event</NavigationItemLink>
   </Navigation>
 );
 

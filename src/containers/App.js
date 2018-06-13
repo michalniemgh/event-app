@@ -1,11 +1,13 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import { Route } from 'react-router-dom';
 import styled from 'styled-components';
+import { compose } from 'redux';
 
-import { colors } from '../styles/common.js';
-import WithProviders from '../hocs/withProviders';
+import withProviders from '../hocs/withProviders';
+import WithAppData from '../hocs/WithAppData';
 import AppBar from './AppBar';
-import Main from '../routes/Main'
+import Main from '../routes/Main';
+import BrowseEvent from '../routes/BrowseEvent';
 
 const Content = styled.div`
   background: rgb(239, 242, 245, .5);
@@ -16,7 +18,13 @@ const App = () =>
     <AppBar />
     <Content>
       <Route path="/main" component={Main} />
+      <Route path="/browse-events" component={BrowseEvent} />
     </Content>
   </Fragment>
 
-export default WithProviders(App);
+const enhances = compose(
+  withProviders,
+  WithAppData,
+)
+
+export default enhances(App);

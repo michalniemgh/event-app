@@ -1,6 +1,6 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { colors } from '../styles/common.js';
 import Navigation from '../components/Navigation';
@@ -14,7 +14,7 @@ const AppBar = styled.div`
   height: 64px;
 `;
 
-const StyledLogoLink = styled(NavLink)`
+const StyledLogoLink = styled(Link)`
   display: flex;
   align-items: center;
   height: 100%;

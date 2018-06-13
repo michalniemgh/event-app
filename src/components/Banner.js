@@ -6,7 +6,7 @@ import banner from '../assets/images/banner.jpeg';
 const Banner = styled.div`
   width: 100%;
   height: 500px;
-  background-position: center;
+  background-position: bottom;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;

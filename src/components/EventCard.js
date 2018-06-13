@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Col } from 'react-flexbox-grid';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { colors } from '../styles/common.js';
 
@@ -33,7 +33,7 @@ const EventCardPrice = styled.div`
   right: 10px;
 `;
 
-const StyledEventLink = styled(NavLink)`
+const StyledEventLink = styled(Link)`
   color: ${colors.grey};
   text-decoration: none;
   &:focus, &:hover, &:visited, &:link, &:active {
@@ -41,7 +41,7 @@ const StyledEventLink = styled(NavLink)`
   }
 `;
 
-const EventBody = styled.div`
+const EventCardBody = styled.div`
   padding: 10px 15px;
   display: flex;
   flex-direction: column;
@@ -74,31 +74,64 @@ const EventCardFooter = styled.div`
   padding-left: 15px;
 `;
 
-const EventCard = ({ path, price, image, date, title, venue, ...props }) => (
+const EventCardTagsContainer = styled.div`
+  display: flex;
+  width: 70%;
+`;
+
+const EventCardTag = styled.div`
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 40px;
+  margin-right: 10px;
+  text-transform: capitalize;
+`;
+
+const EventCardButton= styled.div`
+  border-left: 1px solid ${colors.lightGrey};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15%;
+  &:hover {
+    color: ${colors.sea};
+    cursor: pointer;
+  }
+`;
+
+const EventCard = ({ path, price, image, date, title, venue, tags, ...props }) => (
   <Col { ...props }>
     <EventCardContainer>
       <StyledEventLink to={path}>
         <EventCardPrice>{price}</EventCardPrice>
         <EventCardPoster src={image} />
-        <EventBody>
+        <EventCardBody>
           <EventCardDate>{date}</EventCardDate>
           <EventCardTitle>{title}</EventCardTitle>
           <EventCardVenue>{venue}</EventCardVenue>
-        </EventBody>
+        </EventCardBody>
       </StyledEventLink>
       <EventCardFooter>
-
-
+        <EventCardTagsContainer>
+          {tags.slice(0, 2).map(tag => 
+            <EventCardTag key={tag}>{`#${tag}`}</EventCardTag>
+          )}
+        </EventCardTagsContainer>
+        <EventCardButton>X</EventCardButton>
+        <EventCardButton>Y</EventCardButton>
       </EventCardFooter>
     </EventCardContainer>
   </Col>
 );
 
-// EventCard.propTypes = {
-//   title: PropTypes.string,
-//   description: PropTypes.string,
-//   image: PropTypes.string,
-//   path: PropTypes.string,
-// }
+EventCard.propTypes = {
+  path: PropTypes.string,
+  price: PropTypes.string,
+  image: PropTypes.string,
+  date: PropTypes.string,
+  title: PropTypes.string,
+  venue: PropTypes.string,
+  tags: PropTypes.array,
+}
 
 export default EventCard;

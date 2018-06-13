@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Col } from 'react-flexbox-grid';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-const StyledCategoryLink = styled(NavLink)`
+const StyledCategoryLink = styled(Link)`
   height: 220px;
   margin: 8px 0;
   padding: 10px;
@@ -50,6 +50,7 @@ const CategoryTitle = styled.h2`
 
 const CategoryDescription = styled.h4`
   color: white;
+  font-size: 14px;
   text-align: center;
   font-weight: 300
   transform: scale(0);
@@ -72,7 +73,7 @@ Category.propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,
   image: PropTypes.string,
-  path: PropTypes.string,
+  path: PropTypes.object,
 }
 
 export default Category;
