@@ -1,4 +1,4 @@
-import { getCurrentCoords, getCurrentCityName } from '../../geolocation';
+import { getCurrentCoords, getCurrentCityName } from '../../shared/googleMapsApi';
 import { SET_COORDS, SET_CITY_NAME } from './actionTypes';
 
 export const setCoords = () =>
@@ -7,7 +7,6 @@ export const setCoords = () =>
       const position = await getCurrentCoords();
       if (position) {
         const { coords } = position;
-        console.log(coords)
         dispatch({
           type: SET_COORDS,
           payload: {

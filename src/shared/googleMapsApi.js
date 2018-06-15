@@ -1,6 +1,6 @@
 import { get } from 'axios';
 
-const API_KEY = 'AIzaSyAIT4MRjZ2uU7r-law99yc3a5Bhi7rA2v4';
+export const API_KEY = 'AIzaSyAIT4MRjZ2uU7r-law99yc3a5Bhi7rA2v4';
 
 export const getCurrentCoords = () => 
   new Promise((resolve, reject) => {

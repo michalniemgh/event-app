@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Col } from 'react-flexbox-grid';
 import { Link } from 'react-router-dom';
+import { map } from 'lodash';
 
 import { colors } from '../styles/common.js';
 
@@ -99,23 +100,23 @@ const EventCardButton= styled.div`
   }
 `;
 
-const EventCard = ({ path, price, image, date, title, venue, tags, ...props }) => (
-  <Col { ...props }>
+const EventCard = ({ path, price, image, date, title, venue, tags }) => (
+  <Col xs={12} md={4}>
     <EventCardContainer>
       <StyledEventLink to={path}>
-        <EventCardPrice>{price}</EventCardPrice>
-        <EventCardPoster src={image} />
+        <EventCardPrice>{price ? price : 'FREE'}</EventCardPrice>
+        <EventCardPoster src={image ? image : null } />
         <EventCardBody>
-          <EventCardDate>{date}</EventCardDate>
-          <EventCardTitle>{title}</EventCardTitle>
-          <EventCardVenue>{venue}</EventCardVenue>
+          <EventCardDate>{date ? date : 'unknown'}</EventCardDate>
+          <EventCardTitle>{title ? title : 'example title'}</EventCardTitle>
+          <EventCardVenue>{venue ? venue : 'unknown'}</EventCardVenue>
         </EventCardBody>
       </StyledEventLink>
       <EventCardFooter>
         <EventCardTagsContainer>
-          {tags.slice(0, 2).map(tag => 
+          {map(tags, tag => (
             <EventCardTag key={tag}>{`#${tag}`}</EventCardTag>
-          )}
+          )).slice(1, 3)}
         </EventCardTagsContainer>
         <EventCardButton>X</EventCardButton>
         <EventCardButton>Y</EventCardButton>

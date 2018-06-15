@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import { compose } from 'redux';
 
@@ -24,6 +24,7 @@ const App = () =>
 
 const enhances = compose(
   withProviders,
+  withRouter,
   WithAppData,
 )
 

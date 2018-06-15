@@ -3,10 +3,13 @@ import styled from 'styled-components';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Grid, Row } from 'react-flexbox-grid';
+import map from 'lodash/map';
 
 import { colors } from '../styles/common';
 import EventCard from '../components/EventCard';
 import banner from '../assets/images/banner.jpeg';
+import { selectCityName } from '../store/geolocation/selectors';
+import { selectEvents } from '../store/firebase/selectors';
 
 const PopularEventsContainer = styled.div`
   display: flex;
@@ -34,86 +37,35 @@ font-weight: 400
 }
 `;
 
-const PopularEvents = ({ cityName }) => (
+const PopularEvents = ({ cityName, events }) => (
   <PopularEventsContainer>
     <PopularEventsTitle>
       Popular events in <LocationName>{cityName}</LocationName>
     </PopularEventsTitle>
-    <Grid>
-      <Row>
-        <EventCard
-          path="/workshops"
-          price="free"
-          image={banner}
-          date="WED, JUN 20, 7:00 PM"
-          title="Workshops"
-          venue="Katowice"
-          tags={['music', 'performance', 'sport', 'food']}
-          xs={12}
-          md={4}
-        />
-        <EventCard
-          path="/workshops"
-          price="free"
-          image={banner}
-          date="WED, JUN 20, 7:00 PM"
-          title="Workshops"
-          venue="Katowice"
-          tags={['music', 'performance']}
-          xs={12}
-          md={4}
-        />
-        <EventCard
-          path="/workshops"
-          price="free"
-          image={banner}
-          date="WED, JUN 20, 7:00 PM"
-          title="Workshops"
-          venue="Katowice"
-          tags={['music', 'performance']}
-          xs={12}
-          md={4}
-        />
-        <EventCard
-          path="/workshops"
-          price="free"
-          image={banner}
-          date="WED, JUN 20, 7:00 PM"
-          title="Workshops"
-          venue="Katowice"
-          tags={['music', 'performance']}
-          xs={12}
-          md={4}
-        />
-        <EventCard
-          path="/workshops"
-          price="free"
-          image={banner}
-          date="WED, JUN 20, 7:00 PM"
-          title="Workshops"
-          venue="Katowice"
-          tags={['music', 'performance']}
-          xs={12}
-          md={4}
-        />
-        <EventCard
-          path="/workshops"
-          price="free"
-          image={banner}
-          date="WED, JUN 20, 7:00 PM"
-          title="Workshops"
-          venue="Katowice"
-          tags={['music', 'performance']}
-          xs={12}
-          md={4}
-        />
-      </Row>
-    </Grid>
+    {events &&
+      <Grid>
+        <Row>
+          {map(events, (event, key) => (
+            <EventCard
+              key={key}
+              path={`/events?${key}`}
+              price={event.price}
+              image={banner}
+              date={event.date}
+              title={event.title}
+              venue={event.venue}
+              tags={event.tags}
+            />
+          ))}
+        </Row>
+      </Grid>
+    }
   </PopularEventsContainer>
 );
 
 const mapStateToProps = state => ({
-  cityName: state.geolocation.cityName,
+  cityName: selectCityName(state),
+  events: selectEvents(state),
 })
 
 const enhances = compose(

@@ -37,7 +37,7 @@ export default () => (
     <NavigationItemLink to='/browse-events'>Browse Event</NavigationItemLink>
     <NavigationItemLink to='/about'>About</NavigationItemLink>
     <NavigationItemLink to='/sing-in'>Sing in</NavigationItemLink>
-    <NavigationItemLink bold to='/create-event'>Create Event</NavigationItemLink>
+    <NavigationItemLink bold="true" to='/create-event'>Create Event</NavigationItemLink>
   </Navigation>
 );
 

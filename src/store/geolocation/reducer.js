@@ -1,5 +1,4 @@
-import { SET_COORDS, SET_CITY_NAME } from '../actions/actionTypes';
-
+import { SET_COORDS, SET_CITY_NAME } from './actionTypes';
 
 const initialState = {
   coords: null,

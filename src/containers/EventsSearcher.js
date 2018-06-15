@@ -1,7 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { compose } from 'redux';
 import styled from 'styled-components';
 import { Col } from 'react-flexbox-grid';
+
+import ViewportDetector from '../hocs/ViewportDetector';
+import LocationMap from '../components/LocationMap';
 
 const EventsSearcherContainer = styled.div`
   margin: 10px 0;
@@ -10,19 +14,20 @@ const EventsSearcherContainer = styled.div`
   background-color: white;
 `;
 
-const EventsSearcher = ({ ...props }) => (
+const EventsSearcher = ({ ...props, isMobile }) => (
   <Col {...props}>
     <EventsSearcherContainer>
-      EventSearcher
+      {!isMobile && <LocationMap />}
     </EventsSearcherContainer>
   </Col>
 );
 
-// EventSearcher.propTypes = {
-//   title: PropTypes.string,
-//   description: PropTypes.string,
-//   image: PropTypes.string,
-//   path: PropTypes.object,
-// };
+EventsSearcher.propTypes = {
+  isMobile: PropTypes.bool.isRequired,
+};
 
-export default EventsSearcher;
+const enhances = compose(
+  ViewportDetector,
+)
+
+export default enhances(EventsSearcher);

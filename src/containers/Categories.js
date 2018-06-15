@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Grid, Row } from 'react-flexbox-grid';
 
 import { colors } from '../styles/common.js';
-import categoriesInfo from '../containers/categoriesInfo';
+import categoriesInfo from '../shared/categoriesInfo';
 import Category from '../components/Category';
 
 const CategoriesContainer = styled.div`
