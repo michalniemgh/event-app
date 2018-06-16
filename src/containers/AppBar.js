@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-import { colors } from '../styles/common.js';
+// import { colors } from '../styles/common.js';
 import Navigation from '../components/Navigation';
 
 const AppBar = styled.div`
@@ -20,8 +20,8 @@ const StyledLogoLink = styled(Link)`
   height: 100%;
   font-size: 25px;
   font-weight: 700;
-  color: ${colors.red};
-  border-right: 1px solid ${colors.lightGrey};
+  color: ${({ theme }) => theme.colors.red};
+  border-right: 1px solid ${({ theme }) => theme.colors.lightGrey};
   padding-right: 20px;
   text-decoration: none;
     &:focus, &:hover, &:visited, &:link, &:active {

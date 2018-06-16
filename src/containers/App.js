@@ -8,9 +8,11 @@ import WithAppData from '../hocs/WithAppData';
 import AppBar from './AppBar';
 import Main from '../routes/Main';
 import BrowseEvent from '../routes/BrowseEvent';
+import SingIn from '../routes/SingIn';
 
 const Content = styled.div`
   background: rgb(239, 242, 245, .5);
+  min-height: calc(100vh - 64px);
 `;
 
 const App = () =>
@@ -19,6 +21,7 @@ const App = () =>
     <Content>
       <Route path="/main" component={Main} />
       <Route path="/browse-events" component={BrowseEvent} />
+      <Route path="/sing-in" component={SingIn} />
     </Content>
   </Fragment>
 

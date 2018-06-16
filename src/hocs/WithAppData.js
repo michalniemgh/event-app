@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators, compose } from 'redux';
 
 import { setCoords, setCityName } from '../store/geolocation/actionCreators';
-import { fetchEvents } from '../store/firebase/actionCreators';
+import { fetchEvents, getAuth } from '../store/firebase/actionCreators';
 
 const WithAppData = WrappedComponent => 
   class extends Component {
@@ -11,10 +11,11 @@ const WithAppData = WrappedComponent =>
       this.setApplicationData();
     }
     setApplicationData = () => {
-      const { setCoords, setCityName, fetchEvents } = this.props;
+      const { setCoords, setCityName, fetchEvents, getAuth } = this.props;
       setCoords();
       setCityName();
       fetchEvents();
+      getAuth();
     }
     render() {
       return <WrappedComponent />
@@ -26,6 +27,7 @@ const mapDispatchToProps = dispatch =>
     setCoords,
     setCityName,
     fetchEvents,
+    getAuth,
   },
   dispatch);
 
